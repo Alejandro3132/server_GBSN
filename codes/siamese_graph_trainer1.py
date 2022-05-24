@@ -294,11 +294,11 @@ def define_ds_dl_join(doc_dict_folder, data_type_list, ds_list_folder, lim,
         print(f'WARNING: lim parameter is set to {lim}\n', file=f)
     # ========== Load ds_lists
     ds_list_train = load_obj(os.path.join(ds_list_folder,
-                                          'ds_list_train'), fast=True)
+                                          'ds_list_train_n'), fast=True)
     ds_list_val = load_obj(os.path.join(ds_list_folder,
-                                        'ds_list_val'), fast=True)
+                                        'ds_list_val_n'), fast=True)
     ds_list_test = load_obj(os.path.join(ds_list_folder,
-                                         'ds_list_test'), fast=True)
+                                         'ds_list_test_n'), fast=True)
     # ========== Load doc_dicts
     start_time_l = time.time()
     doc_dicts_dict = \
@@ -1314,7 +1314,7 @@ def continue_training():
     num_workers = 8
     epochs = 100
     device = torch.device('cuda:7' if torch.cuda.is_available() else 'cpu')
-    main_loss = 'BCE'
+    main_loss = 'bound_f1_loss'
     bm_free_epochs = 0
     checkpoint_freq = 100
 
