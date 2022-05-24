@@ -1,0 +1,180 @@
+ds_op:  {'exp_label': 'med'}
+experiment repetition:  0  of  3
+
+Sparse mode: False
+device cuda:2
+tensor type torch.FloatTensor
+Epochs: 120
+Batch size: 256
+Starting with exp_op:
+('model_class', <class 'siamese_graph.GCNSiamese2'>)
+('model_args', {'h_ch': 64, 'out_ch': 64, 'drop_p': None, 'conv_layers_num': 9, 'conv_type': <class 'torch_geometric.nn.conv.le_conv.LEConv'>, 'conv_long_type': None, 'conv_long_args': [3], 'att_type': None, 'att_heads': 1, 'pool_type': <class 'siamese_graph.GlobalAttentionSelect'>, 'pool_att_ch': 32, 'pool_att_layers': 8, 'pool_final_relu': True, 'pool_ref': 'last', 'final_out_layers_num': 4, 'final_out_ch': 64, 'final_out_join': 'abs'})
+
+
+loss_fn: BCEWithLogitsLoss()
+loss_fn_aux_dict:
+('soft_f1_loss', <function soft_f1_loss at 0x7f4e5032a160>)
+('double_soft_f1_loss', <function double_soft_f1_loss at 0x7f4e5032a1f0>)
+('bound_f1_loss', <function bound_f1_loss at 0x7f4e5032a310>)
+
+
+
+===== Model:
+
+ GCNSiamese2(
+  (conv1): LEConv(38, 64)
+  (conv2): LEConv(64, 64)
+  (conv_out): LEConv(64, 64)
+  (norm1): BatchNorm(64)
+  (norm2): BatchNorm(64)
+  (norm_out): BatchNorm(64)
+  (conv3): LEConv(64, 64)
+  (conv4): LEConv(64, 64)
+  (conv5): LEConv(64, 64)
+  (norm3): BatchNorm(64)
+  (norm4): BatchNorm(64)
+  (norm5): BatchNorm(64)
+  (conv6): LEConv(64, 64)
+  (conv7): LEConv(64, 64)
+  (conv8): LEConv(64, 64)
+  (norm6): BatchNorm(64)
+  (norm7): BatchNorm(64)
+  (norm8): BatchNorm(64)
+  (pool): GlobalAttentionSelect(gate_nn=Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=32, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=32, out_features=32, bias=True)
+    (7): ReLU()
+    (8): Linear(in_features=32, out_features=32, bias=True)
+    (9): ReLU()
+    (10): Linear(in_features=32, out_features=32, bias=True)
+    (11): ReLU()
+    (12): Linear(in_features=32, out_features=32, bias=True)
+    (13): ReLU()
+    (14): Linear(in_features=32, out_features=1, bias=True)
+    (15): ReLU()
+  ), nn=None)
+  (final_out): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=64, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+===== Optimizer:
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0
+)
+
+ ===== Train model. Execute time was:
+Minutes: 921.42
+Seconds: 55285.03
+
+ ===== Test last_model. Execute time was:
+Minutes: 0.21
+Seconds: 12.37
+
+ ===== Test best_model. Execute time was:
+Minutes: 0.20
+Seconds: 12.24
+
+ ===== Test best_model_sa. Execute time was:
+Minutes: 0.20
+Seconds: 12.12
+
+Saving raw metrics in: ../output_siamese/experiment_2/20-large-train_07071734/med_0-0/cooc-07071734_med_0-0_metrics
+
+ ===== best_model:
+Epoch: 79
+                          val      test
+-------------------  --------  --------
+main loss            0.280624  0.279153
+average              0.901416  0.903273
+roc_auc              0.952342  0.953182
+f1_score             0.878247  0.88153
+c_at_1               0.8794    0.882231
+f_05                 0.88355   0.884689
+brier                0.913541  0.914731
+soft_f1_loss         0.54215   0.539873
+double_soft_f1_loss  0.540909  0.540205
+bound_f1_loss        0.542925  0.540757
+
+ ===== best_model_sa:
+Epoch: 104
+                          val      test
+-------------------  --------  --------
+main loss            0.283127  0.283538
+average              0.902872  0.90399
+roc_auc              0.952191  0.952518
+f1_score             0.879034  0.881392
+c_at_1               0.881106  0.882993
+f_05                 0.888562  0.888689
+brier                0.913469  0.914358
+soft_f1_loss         0.543839  0.541972
+double_soft_f1_loss  0.539701  0.539142
+bound_f1_loss        0.544616  0.542861
+
+ ===== last_model:
+Epoch: 119
+                          val      test
+-------------------  --------  --------
+main loss            0.292729  0.291252
+average              0.902124  0.902661
+roc_auc              0.951984  0.952965
+f1_score             0.882425  0.883666
+c_at_1               0.882195  0.882885
+f_05                 0.881621  0.880144
+brier                0.912393  0.913645
+soft_f1_loss         0.537681  0.535506
+double_soft_f1_loss  0.538233  0.537485
+bound_f1_loss        0.538453  0.536398
+
+ ===== Early stop model:
+Epoch: 79
+Early stop model deactivated
+
+===== Max average in val: 0.902872 epoch 104
+
+===== Optimize threshold for best_model:
+Test: Original
+0.9032727935512874
+Val: Best th posible
+('0.55', '0.20')
+0.9135539942260698
+Test: Optimized
+0.9151463067861462
+Test: Best th posible
+('0.50', '0.20')
+0.9154035490503926
+
+===== Optimize threshold for best_model_sa:
+Test: Original
+0.9039902042714726
+Val: Best th posible
+('0.50', '0.20')
+0.9138318470561639
+Test: Optimized
+0.9145285460632936
+Test: Best th posible
+('0.50', '0.25')
+0.9148770077581755
+
+==========
+Max gpu_usage: 2483
+
+ ===== Total time for cooc-07071734_med_0-0. Execute time was:
+Minutes: 924.19
+Seconds: 55451.42

@@ -1,0 +1,11 @@
+
+ ===== Load doc_dict. Execute time was:
+Minutes: 1.69
+Seconds: 101.18
+Number of training graphs: 220438
+Number of val graphs: 27554
+Number of test graphs: 27554
+
+ ===== Load all. Execute time was:
+Minutes: 1.69
+Seconds: 101.18
